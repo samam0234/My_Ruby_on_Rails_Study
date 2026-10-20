@@ -1,0 +1,15 @@
+<% content_for :title, "Rails 실습" %>
+
+<section class="hero">
+  <p class="eyebrow">study1 · 첫 화면</p>
+  <h1>Rails 실습에 오신 것을 환영합니다</h1>
+  <p>
+    이 문장은 <code>HomeController#index</code>가
+    <code>app/views/home/index.html.erb</code>를 그려서 보낸 것입니다.
+    주소 <code>/</code>는 <code>config/routes.rb</code>의 <code>root</code>가 받습니다.
+  </p>
+  <ul class="plain-list">
+    <li>서버가 살아 있는지는 <a href="<%= rails_health_check_path %>">/up</a>에서 확인합니다.</li>
+    <li>JavaScript 화면은 <code>js/demo</code>(5173), TypeScript 화면은 <code>ts/demo</code>(5174)에서 따로 띄웁니다.</li>
+  </ul>
+</section>
