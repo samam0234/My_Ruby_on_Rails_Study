@@ -9,6 +9,7 @@ module Api
       end
 
       def show
+        @comments = @post.comments.includes(:user).order(created_at: :asc)
       end
 
       def create
