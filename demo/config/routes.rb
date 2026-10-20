@@ -19,4 +19,10 @@ Rails.application.routes.draw do
   resources :posts do
     resources :comments, only: %i[create destroy]
   end
+
+  namespace :api do
+    namespace :v1 do
+      resources :posts, only: %i[index show create update destroy]
+    end
+  end
 end
