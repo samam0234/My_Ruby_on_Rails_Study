@@ -1,0 +1,22 @@
+<%= form_with model: post do |form| %>
+  <div>
+    <%= form.label :title, "제목" %>
+    <%= form.text_field :title, required: true, maxlength: 120 %>
+    <% post.errors.full_messages_for(:title).each do |message| %>
+      <p class="field-error"><%= message %></p>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.label :body, "본문" %>
+    <%= form.text_area :body, rows: 8, required: true %>
+    <% post.errors.full_messages_for(:body).each do |message| %>
+      <p class="field-error"><%= message %></p>
+    <% end %>
+  </div>
+
+  <div class="row-actions">
+    <%= form.submit "저장" %>
+    <%= link_to "취소", post.persisted? ? post : posts_path, class: "button secondary" %>
+  </div>
+<% end %>

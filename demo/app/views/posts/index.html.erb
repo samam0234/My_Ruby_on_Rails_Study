@@ -1,0 +1,21 @@
+<% content_for :title, "게시글" %>
+
+<div class="toolbar">
+  <h1>게시글</h1>
+  <%= link_to "글쓰기", new_post_path, class: "button" %>
+</div>
+
+<% if @posts.empty? %>
+  <p class="meta">아직 글이 없습니다.</p>
+<% else %>
+  <ul class="post-list">
+    <% @posts.each do |post| %>
+      <li>
+        <article>
+          <h2><%= link_to post.title, post %></h2>
+          <p class="meta"><%= post.created_at.strftime("%Y-%m-%d %H:%M") %></p>
+        </article>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
