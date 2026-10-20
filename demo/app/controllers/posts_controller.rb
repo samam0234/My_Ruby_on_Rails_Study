@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   before_action :require_author, only: %i[edit update destroy]
 
   def index
-    @posts = Post.includes(:user).order(created_at: :desc)
+    @posts, @total, @page, @per = Post.catalog(query: params[:q], page: params[:page], per: params[:per])
   end
 
   def show

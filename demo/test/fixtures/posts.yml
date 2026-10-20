@@ -2,8 +2,12 @@ hello:
   user: mina
   title: 첫 글
   body: 본문입니다
+  created_at: 2026-10-01 09:00:00
+  updated_at: 2026-10-01 09:00:00
 
 memo:
   user: jun
   title: 메모
   body: 짧은 메모
+  created_at: 2026-10-02 09:00:00
+  updated_at: 2026-10-02 09:00:00

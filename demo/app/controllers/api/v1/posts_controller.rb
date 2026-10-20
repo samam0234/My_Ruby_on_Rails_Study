@@ -5,7 +5,7 @@ module Api
       before_action :set_post, only: %i[show update destroy]
 
       def index
-        @posts = Post.includes(:user).order(created_at: :desc)
+        @posts, @total, @page, @per = Post.catalog(query: params[:q], page: params[:page], per: params[:per])
       end
 
       def show
