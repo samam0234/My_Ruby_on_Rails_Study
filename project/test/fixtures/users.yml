@@ -1,0 +1,9 @@
+mina:
+  email: mina@example.com
+  nickname: 미나
+  password_digest: <%= BCrypt::Password.create("password123", cost: 4) %>
+
+jun:
+  email: jun@example.com
+  nickname: 준
+  password_digest: <%= BCrypt::Password.create("password123", cost: 4) %>

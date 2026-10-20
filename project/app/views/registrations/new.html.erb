@@ -1,0 +1,28 @@
+<% content_for :title, "회원가입" %>
+
+<section class="card">
+  <h1>회원가입</h1>
+  <%= form_with model: @user, url: signup_path do |form| %>
+    <%= form.label :email, "이메일" %>
+    <%= form.email_field :email, required: true, autocomplete: "username" %>
+    <% @user.errors.full_messages_for(:email).each do |message| %>
+      <p class="field-error"><%= message %></p>
+    <% end %>
+
+    <%= form.label :nickname, "닉네임" %>
+    <%= form.text_field :nickname, required: true, maxlength: 30 %>
+    <% @user.errors.full_messages_for(:nickname).each do |message| %>
+      <p class="field-error"><%= message %></p>
+    <% end %>
+
+    <%= form.label :password, "비밀번호" %>
+    <%= form.password_field :password, required: true, autocomplete: "new-password" %>
+    <% @user.errors.full_messages_for(:password).each do |message| %>
+      <p class="field-error"><%= message %></p>
+    <% end %>
+
+    <%= form.label :password_confirmation, "비밀번호 확인" %>
+    <%= form.password_field :password_confirmation, required: true, autocomplete: "new-password" %>
+    <%= form.submit "가입" %>
+  <% end %>
+</section>

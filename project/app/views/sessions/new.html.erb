@@ -1,0 +1,13 @@
+<% content_for :title, "로그인" %>
+
+<section class="card">
+  <h1>로그인</h1>
+  <%= form_with url: login_path do |form| %>
+    <%= form.label :email, "이메일" %>
+    <%= form.email_field :email, value: params[:email], required: true, autocomplete: "username" %>
+    <%= form.label :password, "비밀번호" %>
+    <%= form.password_field :password, required: true, autocomplete: "current-password" %>
+    <%= form.submit "로그인" %>
+  <% end %>
+  <p class="meta"><%= link_to "계정이 없으면 가입", signup_path %></p>
+</section>

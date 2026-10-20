@@ -1,0 +1,38 @@
+<% content_for :title, "게시글" %>
+
+<div class="toolbar">
+  <h1>게시글</h1>
+  <%= form_with url: posts_path, method: :get, class: "search" do |form| %>
+    <%= form.label :q, "검색" %>
+    <%= form.text_field :q, value: params[:q], placeholder: "제목 또는 본문" %>
+    <%= form.submit "찾기" %>
+  <% end %>
+  <%= link_to "글쓰기", new_post_path, class: "button" %>
+</div>
+
+<% if @posts.empty? %>
+  <p class="meta">아직 글이 없습니다.</p>
+<% else %>
+  <ul class="post-list">
+    <% @posts.each do |post| %>
+      <li>
+        <article>
+          <h2><%= link_to post.title, post %></h2>
+          <p class="meta"><%= post.user&.nickname || "익명" %> · <%= post.created_at.strftime("%Y-%m-%d %H:%M") %></p>
+        </article>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<% if @total > @per %>
+  <nav class="pager">
+    <% if @page > 1 %>
+      <%= link_to "이전", posts_path(q: params[:q], page: @page - 1, per: @per) %>
+    <% end %>
+    <span class="meta"><%= @page %> / <%= (@total.to_f / @per).ceil %></span>
+    <% if @page * @per < @total %>
+      <%= link_to "다음", posts_path(q: params[:q], page: @page + 1, per: @per) %>
+    <% end %>
+  </nav>
+<% end %>
