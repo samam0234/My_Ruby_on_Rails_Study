@@ -5,6 +5,23 @@ module Api
 
       private
 
+      def current_user
+        return @current_user if defined?(@current_user)
+
+        if request.authorization.present?
+          @current_user = user_from_bearer
+        else
+          super
+        end
+      end
+
+      def user_from_bearer
+        scheme, token = request.authorization.to_s.split(" ", 2)
+        return unless scheme&.casecmp("Bearer")&.zero? && token.present?
+
+        ApiToken.user_from(token)
+      end
+
       def require_login
         return if current_user
 
