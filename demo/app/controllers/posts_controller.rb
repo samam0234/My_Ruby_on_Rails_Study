@@ -1,5 +1,7 @@
 class PostsController < ApplicationController
+  before_action :require_login, except: %i[index show]
   before_action :set_post, only: %i[show edit update destroy]
+  before_action :require_author, only: %i[edit update destroy]
 
   def index
     @posts = Post.includes(:user).order(created_at: :desc)
@@ -14,7 +16,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(post_params)
+    @post = current_user.posts.build(post_params)
     if @post.save
       redirect_to @post, notice: "글을 저장했습니다."
     else
@@ -46,5 +48,11 @@ class PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:title, :body)
+  end
+
+  def require_author
+    return if @post.user_id == current_user.id
+
+    redirect_to @post, alert: "작성자만 수정하거나 삭제할 수 있습니다."
   end
 end

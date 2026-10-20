@@ -29,6 +29,13 @@
       <nav class="site-nav">
         <%= link_to "홈", root_path %>
         <%= link_to "게시글", posts_path %>
+        <% if current_user %>
+          <span><%= current_user.nickname %></span>
+          <%= button_to "로그아웃", logout_path, method: :delete, class: "secondary" %>
+        <% else %>
+          <%= link_to "로그인", login_path %>
+          <%= link_to "회원가입", signup_path %>
+        <% end %>
       </nav>
     </header>
 
