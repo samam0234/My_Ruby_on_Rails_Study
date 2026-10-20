@@ -53,9 +53,12 @@
 
 ## 7. 현재 진행 현황
 
-- 학습 문서와 실습 코드 작성 전입니다. 폴더 역할만 위 구조로 확정했습니다.
+- `study0.md`부터 `studyFinal.md`까지 문서와 실습 코드가 있습니다.
+- `demo/`는 3000, `project/`는 3001입니다. `js/demo` 5173, `ts/demo` 5174, `js/project` 5180, `ts/project` 5181입니다.
+- HTML 로그인은 세션이고, API 로그인은 JWT입니다. Devise는 비교 설명만 있습니다.
 - `config/master.key`, `node_modules`, SQLite 파일, `log/`, `tmp/`는 커밋하지 않습니다.
 
 ### 다음 단계 후보
 
-- `study0.md`부터 번호 순서대로 문서와 실습 코드를 추가합니다.
+- 비밀번호 재설정, 이메일 인증, 계정 잠금은 범위 밖입니다. 넣으려면 새 study로 분리합니다.
+- Windows에서 `bundle`이나 `rails` 전에 `DEBUG` 환경 변수를 지웁니다. 남아 있으면 `rbs` 빌드가 실패합니다.
