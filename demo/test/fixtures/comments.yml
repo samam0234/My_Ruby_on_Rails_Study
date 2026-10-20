@@ -1,3 +1,4 @@
 on_hello:
   post: hello
+  user: mina
   body: 첫 댓글입니다

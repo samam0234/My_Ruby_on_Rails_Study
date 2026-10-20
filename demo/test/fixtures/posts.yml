@@ -1,7 +1,9 @@
 hello:
+  user: mina
   title: 첫 글
   body: 본문입니다
 
 memo:
+  user: jun
   title: 메모
   body: 짧은 메모

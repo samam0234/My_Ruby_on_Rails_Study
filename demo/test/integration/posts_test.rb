@@ -40,19 +40,16 @@ class PostsTest < ActionDispatch::IntegrationTest
     assert_equal "고친 메모", posts(:memo).reload.title
   end
 
-  test "destroy removes a post that has no comments" do
+  test "destroy removes the post and its comments" do
+    comment_id = comments(:on_hello).id
+
     assert_difference -> { Post.count }, -1 do
-      delete post_path(posts(:memo))
+      assert_difference -> { Comment.count }, -1 do
+        delete post_path(posts(:hello))
+      end
     end
 
     assert_redirected_to posts_path
-  end
-
-  test "destroy is blocked while a comment still points at the post" do
-    assert_raises ActiveRecord::InvalidForeignKey do
-      delete post_path(posts(:hello))
-    end
-
-    assert Post.exists?(posts(:hello).id)
+    assert_not Comment.exists?(comment_id)
   end
 end
