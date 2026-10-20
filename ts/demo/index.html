@@ -9,10 +9,43 @@
   <body>
     <main>
       <section class="card">
-        <p class="eyebrow">ts/demo · study1</p>
-        <h1 id="title">불러오는 중</h1>
-        <p>이 폴더는 <code>js/demo</code>와 같은 화면을 TypeScript로 다시 만든 것입니다. Rails 코드를 수정하지 않습니다.</p>
-        <p>상태 확인: <a id="health" href="http://127.0.0.1:3000/up">http://127.0.0.1:3000/up</a></p>
+        <p class="eyebrow">ts/demo · study10</p>
+        <h1>게시판 API</h1>
+        <p>이 화면은 <code>js/demo</code>와 같은 게시판을 TypeScript로 다시 만든 것입니다. Rails 주소는 <code>http://127.0.0.1:3000</code>입니다. 샘플 계정은 로컬 학습용입니다.</p>
+        <p id="status"></p>
+        <form id="login">
+          <label>이메일 <input name="email" type="email" autocomplete="username" value="mina@example.com" required></label>
+          <label>비밀번호 <input name="password" type="password" autocomplete="current-password" value="password123" required></label>
+          <div class="row">
+            <button type="submit">로그인</button>
+            <button type="button" id="logout">로그아웃</button>
+          </div>
+        </form>
+        <form id="search" class="row">
+          <input name="q" placeholder="제목 또는 본문">
+          <button type="submit">찾기</button>
+        </form>
+        <p id="meta"></p>
+        <div id="posts"></div>
+        <p class="row">
+          <button type="button" id="prev">이전</button>
+          <button type="button" id="next">다음</button>
+        </p>
+        <form id="new-post">
+          <h2>글쓰기</h2>
+          <label>제목 <input name="title" required></label>
+          <label>본문 <textarea name="body" required></textarea></label>
+          <button type="submit">등록</button>
+        </form>
+        <section id="detail" hidden>
+          <h2 id="detail-title"></h2>
+          <p id="detail-body"></p>
+          <ul id="comments"></ul>
+          <form id="new-comment" class="row">
+            <input name="body" placeholder="댓글" required>
+            <button type="submit">댓글 등록</button>
+          </form>
+        </section>
       </section>
     </main>
     <script type="module" src="/src/main.ts"></script>
