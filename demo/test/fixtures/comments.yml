@@ -1,0 +1,3 @@
+on_hello:
+  post: hello
+  body: 첫 댓글입니다
